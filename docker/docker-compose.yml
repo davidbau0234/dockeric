@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  servidor:
+    build:
+      context: ./servidor
+    ports:
+      - "80:80"
+      - "443:443"
+    # volumes:
+    #   # - ../src:/var/www
+    #   # - ./servidor/config:/etc/nginx
+    #   # - ./servidor/sites/:/etc/nginx/sites-available
+    #   # - ./servidor/conf.d/:/etc/nginx/conf.d
+    #   - ../src:/var/www
+    #   - ./servidor/nginx.conf:/etc/nginx/nginx.conf
+    #   - ./servidor/sites/:/etc/nginx/sites-available
+    #   - ./servidor/conf.d/:/etc/nginx/conf.d
+    depends_on:
+      - php-app
+
+  php-app:
+    build:
+      context: ./php-app
+
+  bd:
+    build:
+      context: ./bd
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=docker
