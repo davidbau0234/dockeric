@@ -26,6 +26,8 @@ services:
   bd:
     build:
       context: ./bd
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_DATABASE=mydb
       - MYSQL_USER=myuser
