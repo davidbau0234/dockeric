@@ -46,3 +46,6 @@ para saber en que carpeta estoy ubicado:
 pwd
 
 para conectarse los contenedores en windows se debe usar la ip 192.168.99.100
+
+para entrar al contenedor:
+docker exec -it docker_bd_1 /bin/bash
