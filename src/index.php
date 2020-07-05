@@ -1,20 +1,19 @@
 <?php 
-  $value = "aplicacion facturacion";
-  $ser = "192.168.99.100";
-  $usuario = "myuser";
-  $password = "secret";
-  $bd = "mydb";
-  echo "preparando conexion";
-  $conexion = mysqli_connect($ser, $usuario, $password, $bd);
-  if ($conexion){
-    echo "conectado";
-  }
-  else {
-    echo "no conectado";
-  }
-?> 
+
+$value = "World";
+
+$db = new PDO('mysql:host=bd;dbname=mydb;charset=utf8mb4', 'myuser', 'secret');
+
+$databaseTest = ($db->query('SELECT * FROM dockerSample'))->fetchAll(PDO::FETCH_OBJ);
+
+?>
+
 <html>
-  <body>
-    <h1> <?= $value ?>!</h1>
-  </body>
-</html>
+    <body>
+        <h1>Hello, <?= $value ?>!</h1>
+
+        <?php foreach($databaseTest as $row): ?>
+            <p>Hello, <?= $row->name ?></p>
+        <?php endforeach; ?>
+    </body>
+</html>>
