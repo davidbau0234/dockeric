@@ -31,4 +31,5 @@ services:
       - MYSQL_USER=myuser
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=docker
-    
+    volumes:
+      - ./bd/data.sql:/docker-entrypoint-initdb.d/data.sql
